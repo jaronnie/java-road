@@ -1,11 +1,11 @@
 package com.jaronnie.k8s_client.typed.coreV1;
 
 public class CoreV1Client {
-    public Credential credential() {
-        return new Credential();
+    public CredentialClient credential() {
+        return new CredentialClient();
     }
 
-    public Machine machine() {
-        return new Machine();
+    public MachineClient machine() {
+        return new MachineClient();
     }
 }
