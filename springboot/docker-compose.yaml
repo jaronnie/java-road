@@ -1,0 +1,8 @@
+version: '3'
+services:
+  springboot:
+    build: ./
+    ports:
+      - '8081:8081'
+    volumes:
+      - ./target/springboot-1.0-SNAPSHOT.jar:/app/springboot-1.0-SNAPSHOT.jar
