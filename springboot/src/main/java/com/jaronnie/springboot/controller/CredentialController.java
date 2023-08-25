@@ -20,6 +20,7 @@ public class CredentialController {
 
     @PostMapping("/create")
     public void create(@RequestBody CredentialBo credentialBo) {
-        System.out.println(credentialBo.getName());
+        iCredentialService.create(credentialBo);
+        R.ok("ok");
     }
 }
