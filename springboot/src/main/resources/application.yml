@@ -23,7 +23,7 @@ mybatis-plus:
     # 对应的 XML 文件位置
     mapperLocations: classpath*:mapper/**/*Mapper.xml
     # 实体扫描，多个package用逗号或者分号分隔
-    typeAliasesPackage: com.xcsoft.**.domain
+    typeAliasesPackage: com.jaronnie.**.domain
     # 启动时是否检查 MyBatis XML 文件的存在，默认不检查
     checkConfigLocation: false
     # 通过该属性可指定 MyBatis 的执行器，MyBatis 的执行器总共有三种：
