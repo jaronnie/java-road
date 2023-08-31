@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS springboot;
 USE springboot;
 
 CREATE TABLE IF NOT EXISTS credential (
-    id BIGINT,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
     type VARCHAR(255)
 );

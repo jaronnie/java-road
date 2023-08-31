@@ -11,6 +11,6 @@ public class CredentialVo {
     private int id;
     private String name;
     private String type;
-    private String createTime;
-    private String updateTime;
+    private Date createTime;
+    private Date updateTime;
 }
