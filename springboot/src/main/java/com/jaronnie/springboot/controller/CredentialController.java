@@ -19,8 +19,10 @@ public class CredentialController {
     }
 
     @PostMapping("/create")
-    public void create(@RequestBody CredentialBo credentialBo) {
-        iCredentialService.create(credentialBo);
-        R.ok("ok");
+    public R<Object> create(@RequestBody CredentialBo credentialBo) {
+        return iCredentialService.create(credentialBo) ?
+                R.ok("ok")
+                :
+                R.fail("create error");
     }
 }

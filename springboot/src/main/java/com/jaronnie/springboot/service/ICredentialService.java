@@ -6,5 +6,5 @@ import com.jaronnie.springboot.domain.vo.CredentialVo;
 public interface ICredentialService {
     CredentialVo detail(int id);
 
-    void create(CredentialBo credentialBo);
+    boolean create(CredentialBo credentialBo);
 }
