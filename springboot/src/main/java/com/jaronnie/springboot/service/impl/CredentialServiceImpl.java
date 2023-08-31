@@ -23,7 +23,6 @@ public class CredentialServiceImpl implements ICredentialService {
 
     @Override
     public boolean create(CredentialBo credentialBo) {
-        // TODO 修复无法自动更新创建时间的问题
         int flag = baseMapper.insert(CredentialPo.builder()
                         .name(credentialBo.getName())
                         .type(credentialBo.getType())

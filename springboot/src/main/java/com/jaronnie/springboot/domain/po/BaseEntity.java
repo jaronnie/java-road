@@ -5,17 +5,16 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Data
-public class BaseEntity {
-    @TableField(
-            fill = FieldFill.INSERT
-    )
-    private Date createTime;
+public class BaseEntity implements Serializable {
+    private static final long serialVersionUID=1L;
 
-    @TableField(
-            fill = FieldFill.INSERT_UPDATE
-    )
-    private Date updateTime;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
 }
