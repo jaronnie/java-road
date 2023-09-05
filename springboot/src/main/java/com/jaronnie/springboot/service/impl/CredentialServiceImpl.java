@@ -1,6 +1,9 @@
 package com.jaronnie.springboot.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jaronnie.springboot.domain.bo.CredentialBo;
 import com.jaronnie.springboot.domain.bo.PageQuery;
@@ -12,17 +15,38 @@ import com.jaronnie.springboot.service.ICredentialService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class CredentialServiceImpl implements ICredentialService {
 
     private final CredentialMapper baseMapper;
 
+    private LambdaQueryWrapper<CredentialPo> buildQueryWrapper(CredentialBo credentialBo) {
+        LambdaQueryWrapper<CredentialPo> lqw = Wrappers.lambdaQuery();
+        lqw.like(StringUtils.isNotBlank(credentialBo.getName()), CredentialPo::getName, credentialBo.getName());
+        return lqw;
+    }
+
     @Override
-    public TableDataInfo<CredentialVo> queryPageList(PageQuery pageQuery) {
-        Page<CredentialPo> page = new Page<>(pageQuery.getPageNum(), pageQuery.getPageSize());
-        baseMapper.selectPage(page, null);
-        return null;
+    public TableDataInfo<CredentialVo> queryPageList(PageQuery pageQuery, CredentialBo credentialBo) {
+        LambdaQueryWrapper<CredentialPo> lqw = buildQueryWrapper(credentialBo);
+        // TODO: fix page
+        Page<CredentialPo> page = baseMapper.selectPage(pageQuery.build(), lqw);
+
+        TableDataInfo<CredentialVo> credentialVoTableDataInfo = new TableDataInfo<>();
+        credentialVoTableDataInfo.setTotal(page.getTotal());
+        List<CredentialVo> result = page.getRecords().stream().map(credentialPo -> CredentialVo.builder()
+                .id(credentialPo.getId())
+                .type(credentialPo.getType())
+                .name(credentialPo.getName())
+                .createTime(credentialPo.getCreateTime())
+                .updateTime(credentialPo.getUpdateTime())
+                .build()).collect(Collectors.toList());
+        credentialVoTableDataInfo.setRows(result);
+        return credentialVoTableDataInfo;
     }
 
     @Override

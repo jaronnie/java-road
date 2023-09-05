@@ -16,9 +16,8 @@ public class CredentialController {
     private final ICredentialService iCredentialService;
 
     @GetMapping("/list")
-    public R<TableDataInfo<CredentialVo>> page(@ModelAttribute PageQuery pageQuery) {
-        System.out.println(pageQuery.getPageNum());
-        return R.ok(iCredentialService.queryPageList(pageQuery));
+    public R<TableDataInfo<CredentialVo>> page(@ModelAttribute PageQuery pageQuery, @ModelAttribute CredentialBo credentialBo) {
+        return R.ok(iCredentialService.queryPageList(pageQuery, credentialBo));
     }
 
     @GetMapping("/{id}")

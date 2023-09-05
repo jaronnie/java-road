@@ -7,7 +7,7 @@ import com.jaronnie.springboot.domain.vo.TableDataInfo;
 
 public interface ICredentialService {
 
-    TableDataInfo<CredentialVo> queryPageList(PageQuery pageQuery);
+    TableDataInfo<CredentialVo> queryPageList(PageQuery pageQuery, CredentialBo credentialBo);
 
     CredentialVo detail(int id);
 
