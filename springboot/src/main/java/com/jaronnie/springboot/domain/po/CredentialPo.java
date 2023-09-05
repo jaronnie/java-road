@@ -14,10 +14,10 @@ import java.io.Serializable;
 @Data
 @Builder
 public class CredentialPo extends BaseEntity implements Serializable {
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId
-    private int id;
+    private Integer id;
     private String name;
     private String type;
 }

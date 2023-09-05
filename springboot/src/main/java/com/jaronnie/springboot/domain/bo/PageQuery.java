@@ -18,6 +18,9 @@ public class PageQuery {
         if (pageNum <= 0) {
             pageNum = 1;
         }
+        if (pageSize <= 0) {
+            pageSize = Integer.MAX_VALUE;
+        }
 
 
         return new Page<>((long) pageNum, (long) pageSize);
