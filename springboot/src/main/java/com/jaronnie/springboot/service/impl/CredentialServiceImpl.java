@@ -27,13 +27,13 @@ public class CredentialServiceImpl implements ICredentialService {
     private LambdaQueryWrapper<CredentialPo> buildQueryWrapper(CredentialBo credentialBo) {
         LambdaQueryWrapper<CredentialPo> lqw = Wrappers.lambdaQuery();
         lqw.like(StringUtils.isNotBlank(credentialBo.getName()), CredentialPo::getName, credentialBo.getName());
+        lqw.like(StringUtils.isNotBlank(credentialBo.getType()), CredentialPo::getType, credentialBo.getType());
         return lqw;
     }
 
     @Override
     public TableDataInfo<CredentialVo> queryPageList(PageQuery pageQuery, CredentialBo credentialBo) {
         LambdaQueryWrapper<CredentialPo> lqw = buildQueryWrapper(credentialBo);
-        // TODO: fix page
         Page<CredentialPo> page = baseMapper.selectPage(pageQuery.build(), lqw);
 
         TableDataInfo<CredentialVo> credentialVoTableDataInfo = new TableDataInfo<>();
