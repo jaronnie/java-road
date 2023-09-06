@@ -7,6 +7,7 @@ import com.jaronnie.springboot.domain.vo.TableDataInfo;
 import com.jaronnie.springboot.service.ICredentialService;
 import com.jaronnie.springboot.util.R;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,7 +27,7 @@ public class CredentialController {
     }
 
     @PostMapping("/create")
-    public R<Object> create(@RequestBody CredentialBo credentialBo) {
+    public R<Object> create(@Validated @RequestBody CredentialBo credentialBo) {
         return iCredentialService.create(credentialBo) ?
                 R.ok("ok")
                 :
