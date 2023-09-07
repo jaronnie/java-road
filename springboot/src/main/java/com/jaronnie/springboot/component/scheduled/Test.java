@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class Test {
     @Scheduled(cron = "0 0 */1 * * ?")
-    public void test1() {
+    public void everyHour() {
         log.info("\n" +
                 "     __                                  .__        \n" +
                 "    |__|____ _______  ____   ____   ____ |__| ____  \n" +
@@ -18,6 +18,6 @@ public class Test {
                 "    |  |/ __ \\|  | \\(  <_> )   |  \\   |  \\  \\  ___/ \n" +
                 "/\\__|  (____  /__|   \\____/|___|  /___|  /__|\\___  >\n" +
                 "\\______|    \\/                  \\/     \\/        \\/ \n");
-        log.info("every second");
+        log.info("every hour");
     }
 }
