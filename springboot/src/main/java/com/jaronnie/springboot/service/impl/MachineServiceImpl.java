@@ -33,6 +33,12 @@ public class MachineServiceImpl implements IMachineService {
     @Override
     public TableDataInfo<MachineVo> queryPageList(PageQuery pageQuery, MachineBo machineBo) {
         LambdaQueryWrapper<MachinePo> lqw = buildQueryWrapper(machineBo);
+        /*
+          联表查询出 credential type 为 k8s 的 machine
+          String credentialType = "k8s";
+          lqw.inSql(MachinePo::getCredentialId, "SELECT id FROM credential WHERE type = '" + credentialType + "'");
+         */
+
         Page<MachinePo> page = baseMapper.selectPage(pageQuery.build(), lqw);
 
         TableDataInfo<MachineVo> machineVoTableDataInfo = new TableDataInfo<>();

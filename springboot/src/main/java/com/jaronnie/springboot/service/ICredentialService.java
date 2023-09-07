@@ -12,4 +12,6 @@ public interface ICredentialService {
     CredentialVo detail(int id);
 
     boolean create(CredentialBo credentialBo);
+
+    boolean edit(CredentialBo credentialBo, Integer id);
 }

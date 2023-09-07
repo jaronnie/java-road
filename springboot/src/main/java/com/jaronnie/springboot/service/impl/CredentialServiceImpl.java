@@ -14,6 +14,7 @@ import com.jaronnie.springboot.mapper.CredentialMapper;
 import com.jaronnie.springboot.service.ICredentialService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -56,11 +57,20 @@ public class CredentialServiceImpl implements ICredentialService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean create(CredentialBo credentialBo) {
         int flag = baseMapper.insert(CredentialPo.builder()
                 .name(credentialBo.getName())
                 .type(credentialBo.getType())
                 .build());
         return flag == 1;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean edit(CredentialBo credentialBo, Integer id) {
+        CredentialPo credentialPo = BeanUtil.toBean(credentialBo, CredentialPo.class);
+        credentialPo.setId(id);
+        return baseMapper.updateById(credentialPo) == 1;
     }
 }

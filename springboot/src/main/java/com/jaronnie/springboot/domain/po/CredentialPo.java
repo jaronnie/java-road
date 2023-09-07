@@ -1,5 +1,7 @@
 package com.jaronnie.springboot.domain.po;
 
+import com.baomidou.mybatisplus.annotation.FieldStrategy;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
@@ -18,6 +20,8 @@ public class CredentialPo extends BaseEntity implements Serializable {
 
     @TableId
     private Integer id;
+    @TableField(updateStrategy = FieldStrategy.NOT_EMPTY)
     private String name;
+    @TableField(updateStrategy = FieldStrategy.NOT_EMPTY)
     private String type;
 }

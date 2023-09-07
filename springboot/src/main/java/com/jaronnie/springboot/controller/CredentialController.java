@@ -33,4 +33,12 @@ public class CredentialController {
                 :
                 R.fail("create error");
     }
+
+    @PostMapping("/edit/{id}")
+    public R<Object> edit(@RequestBody CredentialBo credentialBo, @PathVariable Integer id) {
+        return iCredentialService.edit(credentialBo, id) ?
+                R.ok("ok")
+                :
+                R.fail("edit error");
+    }
 }
