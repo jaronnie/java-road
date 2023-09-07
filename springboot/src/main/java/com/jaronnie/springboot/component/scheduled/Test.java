@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class Test {
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(cron = "0 0 */1 * * ?")
     public void test1() {
         log.info("\n" +
                 "     __                                  .__        \n" +
