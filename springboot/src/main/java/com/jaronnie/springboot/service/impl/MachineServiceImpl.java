@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jaronnie.springboot.domain.bo.MachineBo;
 import com.jaronnie.springboot.domain.bo.PageQuery;
 import com.jaronnie.springboot.domain.po.MachinePo;
+import com.jaronnie.springboot.domain.vo.MachineStatisticsVo;
 import com.jaronnie.springboot.domain.vo.MachineVo;
 import com.jaronnie.springboot.domain.vo.TableDataInfo;
 import com.jaronnie.springboot.mapper.MachineMapper;
@@ -68,5 +69,10 @@ public class MachineServiceImpl implements IMachineService {
                 .name(machineBo.getName())
                 .build());
         return flag == 1;
+    }
+
+    @Override
+    public List<MachineStatisticsVo> statistics() {
+        return baseMapper.getCountByCredentialType();
     }
 }
