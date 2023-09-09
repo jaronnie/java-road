@@ -1,6 +1,8 @@
-package com.jaronnie.springboot.util.httpUtil.rest;
+package com.jaronnie.springboot.util.httpUtil;
 
 
+import com.jaronnie.springboot.util.httpUtil.rest.RESTClient;
+import com.jaronnie.springboot.util.httpUtil.rest.Request;
 import com.jaronnie.springboot.util.httpUtil.typed.DirectClient;
 
 import java.util.HashMap;

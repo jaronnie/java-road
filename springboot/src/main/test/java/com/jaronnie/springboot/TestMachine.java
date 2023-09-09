@@ -1,6 +1,6 @@
 package com.jaronnie.springboot;
 
-import com.jaronnie.springboot.util.httpUtil.rest.ClientSet;
+import com.jaronnie.springboot.util.httpUtil.ClientSet;
 import com.jaronnie.springboot.util.httpUtil.rest.RESTClient;
 
 public class TestMachine {
