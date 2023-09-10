@@ -8,6 +8,7 @@ import okhttp3.Headers;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -96,5 +97,16 @@ public class Request {
 
     public Object RawResponse() {
         return this.body;
+    }
+
+    public <T> T into(Type type) {
+        Gson gson = new Gson();
+        Result result = gson.fromJson((String) this.body, Result.class);
+        if (result.getCode() != 200) {
+            return null;
+        }
+        Object data = result.getData();
+        String jsonString = gson.toJson(data);
+        return gson.fromJson(jsonString, type);
     }
 }

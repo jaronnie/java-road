@@ -1,7 +1,14 @@
 package com.jaronnie.springboot;
 
+import com.google.gson.reflect.TypeToken;
+import com.jaronnie.springboot.domain.po.MachinePo;
+import com.jaronnie.springboot.domain.vo.MachineStatisticsVo;
+import com.jaronnie.springboot.domain.vo.MachineVo;
 import com.jaronnie.springboot.util.httpUtil.ClientSet;
 import com.jaronnie.springboot.util.httpUtil.rest.RESTClient;
+import com.jaronnie.springboot.util.httpUtil.rest.Request;
+
+import java.util.ArrayList;
 
 public class TestMachine {
 
@@ -15,12 +22,21 @@ public class TestMachine {
         ClientSet clientSet = new ClientSet(restClient);
 
         try {
-            Object object = clientSet.directClient()
+            ArrayList<MachineStatisticsVo> machineStatisticsVos = new ArrayList<>();
+            machineStatisticsVos = clientSet.directClient()
                     .setVerb("GET")
                     .buildSubPath("/api/v1.0/machine/statistics")
-                    .call().RawResponse();
+                    .call().into(machineStatisticsVos.getClass());
 
-            System.out.println(object);
+            System.out.println(machineStatisticsVos);
+
+            MachineVo machineVo = MachineVo.builder().build();
+            machineVo = clientSet.directClient()
+                    .setVerb("GET")
+                    .buildSubPath("/api/v1.0/machine/1")
+                    .call().into(machineVo.getClass());
+            System.out.println(machineVo);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
