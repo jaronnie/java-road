@@ -1,12 +1,9 @@
 package com.jaronnie.springboot;
 
-import com.google.gson.reflect.TypeToken;
-import com.jaronnie.springboot.domain.po.MachinePo;
 import com.jaronnie.springboot.domain.vo.MachineStatisticsVo;
 import com.jaronnie.springboot.domain.vo.MachineVo;
 import com.jaronnie.springboot.util.httpUtil.ClientSet;
-import com.jaronnie.springboot.util.httpUtil.rest.RESTClient;
-import com.jaronnie.springboot.util.httpUtil.rest.Request;
+import com.jaronnie.springboot.util.httpUtil.rest.RESTClient;;
 
 import java.util.ArrayList;
 
