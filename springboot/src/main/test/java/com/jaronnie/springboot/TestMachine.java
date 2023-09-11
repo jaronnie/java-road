@@ -8,8 +8,6 @@ import com.jaronnie.springboot.util.httpUtil.rest.RESTClient;
 
 import java.util.ArrayList;
 
-;
-
 public class TestMachine {
 
 
