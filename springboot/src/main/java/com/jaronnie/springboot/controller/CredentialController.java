@@ -27,18 +27,12 @@ public class CredentialController {
     }
 
     @PostMapping("/create")
-    public R<Object> create(@Validated @RequestBody CredentialBo credentialBo) {
-        return iCredentialService.create(credentialBo) ?
-                R.ok("ok")
-                :
-                R.fail("create error");
+    public R<Boolean> create(@Validated @RequestBody CredentialBo credentialBo) {
+        return R.ok(iCredentialService.create(credentialBo));
     }
 
     @PostMapping("/edit/{id}")
-    public R<Object> edit(@RequestBody CredentialBo credentialBo, @PathVariable Integer id) {
-        return iCredentialService.edit(credentialBo, id) ?
-                R.ok("ok")
-                :
-                R.fail("edit error");
+    public R<Boolean> edit(@RequestBody CredentialBo credentialBo, @PathVariable Integer id) {
+        return R.ok(iCredentialService.edit(credentialBo, id));
     }
 }

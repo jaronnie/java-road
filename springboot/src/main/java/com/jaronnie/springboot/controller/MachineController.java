@@ -30,11 +30,8 @@ public class MachineController {
     }
 
     @PostMapping("/create")
-    public R<Object> create(@Validated @RequestBody MachineBo machineBo) {
-        return iMachineService.create(machineBo) ?
-                R.ok("ok")
-                :
-                R.fail("create error");
+    public R<Boolean> create(@Validated @RequestBody MachineBo machineBo) {
+        return R.ok(iMachineService.create(machineBo));
     }
 
     @GetMapping("statistics")

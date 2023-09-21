@@ -58,7 +58,7 @@ public class CredentialServiceImpl implements ICredentialService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean create(CredentialBo credentialBo) {
+    public Boolean create(CredentialBo credentialBo) {
         int flag = baseMapper.insert(CredentialPo.builder()
                 .name(credentialBo.getName())
                 .type(credentialBo.getType())
@@ -68,7 +68,7 @@ public class CredentialServiceImpl implements ICredentialService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean edit(CredentialBo credentialBo, Integer id) {
+    public Boolean edit(CredentialBo credentialBo, Integer id) {
         CredentialPo credentialPo = BeanUtil.toBean(credentialBo, CredentialPo.class);
         credentialPo.setId(id);
         return baseMapper.updateById(credentialPo) == 1;

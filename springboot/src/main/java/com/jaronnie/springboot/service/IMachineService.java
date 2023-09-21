@@ -14,7 +14,7 @@ public interface IMachineService {
 
     MachineVo detail(int id);
 
-    boolean create(MachineBo machineBo);
+    Boolean create(MachineBo machineBo);
 
     List<MachineStatisticsVo> statistics();
 }

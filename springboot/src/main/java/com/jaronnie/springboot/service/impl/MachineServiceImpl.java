@@ -64,7 +64,7 @@ public class MachineServiceImpl implements IMachineService {
     }
 
     @Override
-    public boolean create(MachineBo machineBo) {
+    public Boolean create(MachineBo machineBo) {
         int flag = baseMapper.insert(MachinePo.builder()
                 .name(machineBo.getName())
                 .build());
