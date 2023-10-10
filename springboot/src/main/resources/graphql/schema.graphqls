@@ -1,16 +1,11 @@
 type Query {
-    bookById(id: ID): Book
+    credentialDetail(id: ID): Credential
 }
 
-type Book {
+type Credential {
     id: ID
     name: String
-    pageCount: Int
-    author: Author
-}
-
-type Author {
-    id: ID
-    firstName: String
-    lastName: String
+    type: String
+    createTime: String
+    updateTime: String
 }
