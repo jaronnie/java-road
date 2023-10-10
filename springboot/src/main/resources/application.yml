@@ -4,6 +4,12 @@ server:
   port: 8081
 
 spring:
+  ## max file size
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
   ## graphql
   graphql:
     graphiql:
