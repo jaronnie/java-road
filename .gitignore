@@ -2,3 +2,4 @@
 target
 .idea/
 springboot/data/data
+springboot/data/uploads
