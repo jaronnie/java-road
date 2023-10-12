@@ -106,7 +106,8 @@ public class OssServiceImpl implements IOssService {
         // 定义支持预览的媒体类型，例如图片类型
         return mediaType.isCompatibleWith(MediaType.IMAGE_JPEG) ||
                 mediaType.isCompatibleWith(MediaType.IMAGE_PNG) ||
-                mediaType.isCompatibleWith(MediaType.IMAGE_GIF);
+                mediaType.isCompatibleWith(MediaType.IMAGE_GIF) ||
+                mediaType.isCompatibleWith(MediaType.valueOf("video/mp4"));
     }
 
     private String getFileUrl(String fileName) {
