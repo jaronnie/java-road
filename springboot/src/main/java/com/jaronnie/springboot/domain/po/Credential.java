@@ -4,20 +4,24 @@ import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 
 @EqualsAndHashCode(callSuper = false)
 @TableName(value = "credential", autoResultMap = true)
+@Entity
 @Data
 @Builder
-public class CredentialPo extends BaseEntity implements Serializable {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Credential extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Id
     @TableId
     private Integer id;
     @TableField(updateStrategy = FieldStrategy.NOT_EMPTY)

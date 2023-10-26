@@ -9,6 +9,8 @@ public interface ICredentialService {
 
     TableDataInfo<CredentialVo> queryPageList(PageQuery pageQuery, CredentialBo credentialBo);
 
+    TableDataInfo<CredentialVo> queryPageListByJpa(PageQuery pageQuery, CredentialBo credentialBo);
+
     CredentialVo detail(int id);
 
     Boolean create(CredentialBo credentialBo);

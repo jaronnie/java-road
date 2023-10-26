@@ -21,6 +21,11 @@ public class CredentialController {
         return R.ok(iCredentialService.queryPageList(pageQuery, credentialBo));
     }
 
+    @GetMapping("/listByJpa")
+    public R<TableDataInfo<CredentialVo>> pageByType(@ModelAttribute PageQuery pageQuery, @ModelAttribute CredentialBo credentialBo) {
+        return R.ok(iCredentialService.queryPageListByJpa(pageQuery, credentialBo));
+    }
+
     @GetMapping("/{id}")
     public R<CredentialVo> detail(@PathVariable int id) {
         return R.ok(iCredentialService.detail(id));
