@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.jaronnie.springboot.enumeration.errcode.CredentialErrorCodeEnum.CREDENTIAL_NOT_EXIST;
+
 @Service
 @RequiredArgsConstructor
 public class CredentialServiceImpl implements ICredentialService {
@@ -66,6 +68,10 @@ public class CredentialServiceImpl implements ICredentialService {
     @Override
     public CredentialVo detail(int id) {
         Credential credentialPo = baseMapper.selectById(id);
+        if (credentialPo == null) {
+            throw CREDENTIAL_NOT_EXIST.newException();
+        }
+
         return BeanUtil.toBean(credentialPo, CredentialVo.class);
     }
 
