@@ -7,6 +7,30 @@ services:
     restart: always
     depends_on:
       - mysql
+  oracle11g:
+    image: deepdiver/docker-oracle-xe-11g
+    restart: always
+    container_name: springboot-oracle11g
+    ports:
+      - '1521:1521'
+  dameng8:
+    image: dm8_single:dm8_20230808_rev197096_x86_rh6_64
+    restart: always
+    container_name: springboot-dameng8
+    privileged: true
+    environment:
+      - PAGE_SIZE=16
+      - LD_LIBRARY_PATH=/opt/dmdbms/bin
+      - EXTENT_SIZE=32
+      - BLANK_PAD_MODE=1
+      - LOG_SIZE=1024
+      - UNICODE_FLAG=1
+      - LENGTH_IN_CHAR=1
+      - INSTANCE_NAME=springboot-dameng8
+    volumes:
+      - ./data/dm8_data:/opt/dmdbms/data
+    ports:
+      - '30236:5236'
   mysql:
     image: mysql:8.0.32
     deploy:

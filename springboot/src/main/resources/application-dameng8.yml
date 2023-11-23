@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: dm.jdbc.driver.DmDriver
+    url: jdbc:dm://localhost:30236/
+    username: SYSDBA
+    password: SYSDBA001
+
+

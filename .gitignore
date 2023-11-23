@@ -3,3 +3,4 @@ target
 .idea/
 springboot/data/data
 springboot/data/uploads
+springboot/data/dm8_data/
