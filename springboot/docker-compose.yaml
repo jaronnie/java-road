@@ -6,7 +6,7 @@ services:
       - '8081:8081'
     restart: always
     depends_on:
-      - mysql
+      - mysql8
   oracle11g:
     image: deepdiver/docker-oracle-xe-11g
     restart: always
@@ -31,7 +31,7 @@ services:
       - ./data/dm8_data:/opt/dmdbms/data
     ports:
       - '30236:5236'
-  mysql:
+  mysql8:
     image: mysql:8.0.32
     deploy:
       resources:
@@ -39,7 +39,7 @@ services:
           cpus: '4'
           memory: 4096M
     restart: always
-    container_name: springboot-mysql
+    container_name: springboot-mysql8
     ports:
       - '3306:3306'
     environment:
