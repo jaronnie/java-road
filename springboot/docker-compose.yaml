@@ -1,7 +1,10 @@
 version: '3'
 services:
   springboot:
-    build: ./
+    build:
+      context: ./
+      args:
+        - profile=docker-dameng8
     ports:
       - '8081:8081'
     restart: always
